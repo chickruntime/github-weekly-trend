@@ -1,0 +1,32 @@
+# 주간 트렌드 리포트 설정. 카테고리를 추가하려면 categories 목록에 항목을 하나 더 넣으세요.
+
+model: claude-haiku-5-5
+top_n: 10            # 종합 순위 개수
+category_max: 5      # 카테고리별 최대 소개 수
+extras_max: 5        # 추가 추천 최대 수
+topic_created_within_days: 30   # 토픽 검색: 최근 N일 내 생성된 레포만
+
+categories:
+  - id: backend
+    title: "🧱 백엔드"
+    description: "서버 프레임워크, API, 데이터베이스, 메시징/큐, 인증, 백엔드 라이브러리"
+    languages: [go, java, kotlin, rust, elixir, php, ruby, c%23]
+    topics: [backend, api, database, microservices]
+
+  - id: infra
+    title: "☁️ 인프라 / DevOps"
+    description: "클라우드, 컨테이너/쿠버네티스, IaC, CI/CD, 모니터링/관측성, 셀프호스팅, 네트워킹"
+    languages: [hcl, shell, dockerfile, nix]
+    topics: [kubernetes, devops, terraform, observability, self-hosted]
+
+  - id: frontend
+    title: "🎨 프론트엔드"
+    description: "웹 UI 프레임워크, 컴포넌트 라이브러리, CSS, 빌드 도구, 웹 앱 개발 도구"
+    languages: [typescript, javascript, vue, svelte, css]
+    topics: [frontend, react, vue, ui-components, css]
+
+  - id: design
+    title: "🖌️ 디자인 / 그래픽"
+    description: "디자인 시스템, 디자인 툴, 아이콘/폰트, 2D/3D 그래픽, 셰이더, 애니메이션, 이미지/영상 처리"
+    languages: [glsl]
+    topics: [design-system, figma, graphics, shader, webgl, icons]

@@ -1,0 +1,65 @@
+name: weekly-trend
+
+on:
+  schedule:
+    - cron: "0 0 * * 1"   # 매주 월요일 00:00 UTC = 09:00 KST
+  workflow_dispatch:       # Actions 탭에서 수동 실행
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-trend
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: "3.13"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - run: python -m pytest -q
+
+      - name: Build report
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: python -m trend.main
+
+      - name: Commit & push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add weekly README.md data
+          if git diff --cached --quiet; then
+            echo "No changes"
+          else
+            week=$(python -c "import json;print(json.load(open('data/latest.json'))['week'])")
+            git commit -m "docs: ${week} weekly trend"
+            git push
+          fi
+
+      - name: Notify Slack
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        run: python -m trend.notify
+
+      - name: Notify Slack on failure
+        if: failure()
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+        # curl so the alert still goes out even if dependency install was what failed
+        run: |
+          [ -z "$SLACK_WEBHOOK_URL" ] && exit 0
+          url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID"
+          curl -fsS -X POST -H 'Content-type: application/json' \
+            --data "{\"text\":\"⚠️ 이번 주 GitHub 트렌드 리포트 생성에 실패했습니다. <${url}|Actions 로그 보기>\"}" \
+            "$SLACK_WEBHOOK_URL"
