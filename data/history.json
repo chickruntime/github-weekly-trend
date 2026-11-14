@@ -1,18 +1,15 @@
 {
   "repos": {
-    "CorentinTh/it-tools": [
+    "Abdenasser/neohtop": [
       "2026-W46"
     ],
-    "Duoasa/DSH-to-Figma": [
+    "CorentinTh/it-tools": [
       "2026-W46"
     ],
     "KhronosGroup/SPIRV-Cross": [
       "2026-W46"
     ],
     "NVIDIA/auto-ontology": [
-      "2026-W46"
-    ],
-    "NixOS/nixpkgs": [
       "2026-W46"
     ],
     "ZhuLinsen/daily_stock_analysis": [
@@ -33,7 +30,13 @@
     "astral-sh/ruff": [
       "2026-W46"
     ],
+    "declarative-dragging/dragology": [
+      "2026-W46"
+    ],
     "elastic/elasticsearch": [
+      "2026-W46"
+    ],
+    "genesisdb-io/genesisdb": [
       "2026-W46"
     ],
     "goldbergyoni/nodebestpractices": [
@@ -46,6 +49,12 @@
       "2026-W46"
     ],
     "keycloak/keycloak": [
+      "2026-W46"
+    ],
+    "kubehenge/kubehenge": [
+      "2026-W46"
+    ],
+    "lucas-martinic/polyfork-catalog": [
       "2026-W46"
     ],
     "mattpocock/skills": [
@@ -63,28 +72,22 @@
     "nix-community/home-manager": [
       "2026-W46"
     ],
-    "nordify/css-liquid-glass": [
-      "2026-W46"
-    ],
-    "open-webui/open-webui": [
+    "nodejs/docker-node": [
       "2026-W46"
     ],
     "prometheus/prometheus": [
       "2026-W46"
     ],
-    "rails/rails": [
+    "quyvu01/jfxmap": [
+      "2026-W46"
+    ],
+    "recepkutuk/canon": [
       "2026-W46"
     ],
     "sherlock-project/sherlock": [
       "2026-W46"
     ],
-    "sidiangongyuan/paper-figure-to-figma": [
-      "2026-W46"
-    ],
     "sloemo01/diorama": [
-      "2026-W46"
-    ],
-    "symfony/symfony": [
       "2026-W46"
     ],
     "terraform-aws-modules/terraform-aws-eks": [
@@ -94,9 +97,6 @@
       "2026-W46"
     ],
     "vercel-labs/agent-browser": [
-      "2026-W46"
-    ],
-    "vercel-labs/agent-desktop": [
       "2026-W46"
     ],
     "zed-industries/zed": [
