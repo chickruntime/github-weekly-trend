@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: write
+  id-token: write   # GitHub OIDC token for Anthropic Workload Identity Federation
 
 concurrency:
   group: weekly-trend
@@ -30,6 +31,12 @@ jobs:
 
       - name: Build report
         env:
+          # Auth option A: Workload Identity Federation (repo Variables, no stored key)
+          ANTHROPIC_FEDERATION_RULE_ID: ${{ vars.ANTHROPIC_FEDERATION_RULE_ID }}
+          ANTHROPIC_ORGANIZATION_ID: ${{ vars.ANTHROPIC_ORGANIZATION_ID }}
+          ANTHROPIC_SERVICE_ACCOUNT_ID: ${{ vars.ANTHROPIC_SERVICE_ACCOUNT_ID }}
+          ANTHROPIC_IDENTITY_TOKEN_FILE: ${{ runner.temp }}/gha-jwt
+          # Auth option B: API key secret (takes precedence if set)
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: python -m trend.main

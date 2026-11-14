@@ -14,7 +14,7 @@ from pathlib import Path
 
 import httpx
 
-from trend import github_api, scrape
+from trend import github_api, scrape, wif
 from trend.config import Config, load_config
 from trend.history import History, week_of, week_range
 from trend.llm import ClaudeSummarizer, FallbackSummarizer
@@ -161,9 +161,16 @@ def main() -> None:
     ap.add_argument("--no-llm", action="store_true")
     args = ap.parse_args()
 
-    use_llm = not args.no_llm and bool(os.environ.get("ANTHROPIC_API_KEY"))
+    # An empty ANTHROPIC_API_KEY (unset Actions secret) would shadow WIF credentials in the SDK.
+    if not os.environ.get("ANTHROPIC_API_KEY"):
+        os.environ.pop("ANTHROPIC_API_KEY", None)
+    use_wif = wif.wif_configured()
+    use_llm = not args.no_llm and (bool(os.environ.get("ANTHROPIC_API_KEY")) or use_wif)
     if not args.no_llm and not use_llm:
-        log.warning("ANTHROPIC_API_KEY not set; running without LLM")
+        log.warning("no Anthropic credentials (API key or WIF); running without LLM")
+    if use_llm and use_wif and not os.environ.get("ANTHROPIC_API_KEY"):
+        wif.start_token_refresher()
+        log.info("using Workload Identity Federation")
     today = args.date or datetime.now(KST).date()
     path = run(load_config(args.config), args.out, today, use_llm)
     print(f"wrote {path}")

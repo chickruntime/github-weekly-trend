@@ -14,7 +14,24 @@
 
 한 레포는 리포트 안에서 한 번만 나옵니다. 지난주에 이미 소개한 레포는 카테고리와 추가 추천에서 빠지고, Top 10에서는 `🔁 N주 연속` 표시와 함께 짧게 소개됩니다.
 
-## 1. Anthropic API 키
+## 1. Claude 인증 (A 또는 B 중 하나)
+
+### A. Workload Identity Federation (권장, 저장되는 키 없음)
+
+Claude Console → Workload identity → Connect workload → GitHub Actions 마법사로 생성합니다.
+연동 규칙의 subject는 `repo:chickruntime/github-weekly-trend:ref:refs/heads/main`, audience는 `https://api.anthropic.com`입니다.
+그다음 레포 **Settings → Secrets and variables → Actions → Variables** 탭에 아래 3개를 등록합니다. 식별자일 뿐 비밀 값은 아닙니다.
+
+| Variable | 값 |
+|---|---|
+| `ANTHROPIC_ORGANIZATION_ID` | 조직 페이지의 UUID |
+| `ANTHROPIC_SERVICE_ACCOUNT_ID` | `svac_...` |
+| `ANTHROPIC_FEDERATION_RULE_ID` | `fdrl_...` |
+
+실행 중에는 GitHub OIDC 토큰이 약 5분마다 만료되므로, `trend/wif.py`가 3분마다 새 토큰을 받아옵니다.
+인증이 실패하면 Console의 Workload identity → 인증 기록 탭에서 거부 사유를 볼 수 있습니다.
+
+### B. API 키
 
 1. https://console.anthropic.com 에서 가입하고 **Billing**에서 크레딧을 충전합니다.
 2. **Limits**에서 월 지출 한도를 낮게 설정합니다(예: $5). 예상 비용은 월 $1 미만입니다.
