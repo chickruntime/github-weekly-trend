@@ -42,6 +42,12 @@ class History:
         return count
 
     def record(self, full_names: list[str], week: str) -> None:
+        """Set the repos featured in `week`, replacing any earlier run of the same week."""
+        for name in list(self.repos):
+            if week in self.repos[name]:
+                self.repos[name].remove(week)
+                if not self.repos[name]:
+                    del self.repos[name]
         for name in full_names:
             weeks = self.repos.setdefault(name, [])
             if week not in weeks:

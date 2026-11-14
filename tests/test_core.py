@@ -62,6 +62,14 @@ def test_streak_and_featured_before(tmp_path):
     assert History(tmp_path / "h.json").repos == h.repos
 
 
+def test_rerun_same_week_replaces_that_weeks_picks(tmp_path):
+    h = History(tmp_path / "h.json")
+    h.record(["a/a"], "2026-W45")
+    h.record(["a/a", "old/pick"], "2026-W46")
+    h.record(["a/a", "new/pick"], "2026-W46")   # second run in the same week
+    assert h.repos == {"a/a": ["2026-W45", "2026-W46"], "new/pick": ["2026-W46"]}
+
+
 # --- llm output hygiene ---
 
 def test_clean_text_strips_links_html_and_newlines():
