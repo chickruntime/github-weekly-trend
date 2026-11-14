@@ -140,7 +140,7 @@ class ClaudeSummarizer:
         try:
             out = self._parse(SUMMARY_SYSTEM, content, _SummaryOut, 4000)
             return Summary(what=clean_text(out.what), why=clean_text(out.why), who=clean_text(out.who))
-        except (anthropic.APIError, RuntimeError) as e:
+        except (anthropic.AnthropicError, RuntimeError) as e:
             log.warning("summary failed for %s: %s", repo.full_name, e)
             self.failures += 1
             return self.fallback.summarize(repo)
@@ -159,7 +159,7 @@ class ClaudeSummarizer:
         blocks.extend(_repo_line(r) for r in extras_pool)
         try:
             out = self._parse(SELECT_SYSTEM, "\n".join(blocks), _SelectionOut, 16000)
-        except (anthropic.APIError, RuntimeError) as e:
+        except (anthropic.AnthropicError, RuntimeError) as e:
             log.warning("selection failed, using fallback: %s", e)
             self.failures += 1
             return self.fallback.select(categories, pools, extras_pool, category_max, extras_max)
@@ -169,7 +169,7 @@ class ClaudeSummarizer:
         try:
             out = self._parse(OVERVIEW_SYSTEM, "\n".join(lines), _OverviewOut, 4000)
             return clean_text(out.overview, limit=600)
-        except (anthropic.APIError, RuntimeError) as e:
+        except (anthropic.AnthropicError, RuntimeError) as e:
             log.warning("overview failed: %s", e)
             self.failures += 1
             return self.fallback.overview(lines)
