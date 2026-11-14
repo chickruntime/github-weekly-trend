@@ -1,3 +1,106 @@
 {
-  "repos": {}
+  "repos": {
+    "CorentinTh/it-tools": [
+      "2026-W46"
+    ],
+    "Duoasa/DSH-to-Figma": [
+      "2026-W46"
+    ],
+    "NVIDIA/auto-ontology": [
+      "2026-W46"
+    ],
+    "Sam1983Aing/ticket-tear": [
+      "2026-W46"
+    ],
+    "ZhuLinsen/daily_stock_analysis": [
+      "2026-W46"
+    ],
+    "addyosmani/agent-skills": [
+      "2026-W46"
+    ],
+    "animate-css/animate.css": [
+      "2026-W46"
+    ],
+    "anthropics/claude-quickstarts": [
+      "2026-W46"
+    ],
+    "anthropics/skills": [
+      "2026-W46"
+    ],
+    "astral-sh/ruff": [
+      "2026-W46"
+    ],
+    "cloudflare/security-audit-skill": [
+      "2026-W46"
+    ],
+    "elastic/elasticsearch": [
+      "2026-W46"
+    ],
+    "genesisdb-io/genesisdb": [
+      "2026-W46"
+    ],
+    "goldbergyoni/nodebestpractices": [
+      "2026-W46"
+    ],
+    "google-deepmind/mujoco": [
+      "2026-W46"
+    ],
+    "google/elephant-goldfish-model": [
+      "2026-W46"
+    ],
+    "keycloak/keycloak": [
+      "2026-W46"
+    ],
+    "kividbio/kividb": [
+      "2026-W46"
+    ],
+    "mattpocock/skills": [
+      "2026-W46"
+    ],
+    "meshy-dev/ThreeRT": [
+      "2026-W46"
+    ],
+    "milind-soni/OpenMausBot": [
+      "2026-W46"
+    ],
+    "nix-community/disko": [
+      "2026-W46"
+    ],
+    "nix-community/home-manager": [
+      "2026-W46"
+    ],
+    "open-webui/open-webui": [
+      "2026-W46"
+    ],
+    "prometheus/prometheus": [
+      "2026-W46"
+    ],
+    "rails/rails": [
+      "2026-W46"
+    ],
+    "sherlock-project/sherlock": [
+      "2026-W46"
+    ],
+    "sixthsurge/photon": [
+      "2026-W46"
+    ],
+    "sloemo01/diorama": [
+      "2026-W46"
+    ],
+    "terraform-aws-modules/terraform-aws-eks": [
+      "2026-W46"
+    ],
+    "terraform-aws-modules/terraform-aws-vpc": [
+      "2026-W46"
+    ],
+    "vercel-labs/agent-browser": [
+      "2026-W46"
+    ],
+    "vercel-labs/ui": [
+      "2026-W46"
+    ],
+    "zed-industries/zed": [
+      "2026-W46"
+    ]
+  }
 }

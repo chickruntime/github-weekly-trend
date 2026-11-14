@@ -1,0 +1,102 @@
+{
+  "week": "2026-W46",
+  "report_path": "weekly/2026-W46.md",
+  "overview": "이번 주는 에이전트를 실무에 붙이는 흐름이 두드러졌습니다. sherlock과 agent-browser처럼 CLI로 외부 기능을 조작하는 도구, anthropics/skills와 mattpocock/skills, addyosmani/agent-skills 같은 스킬 모음이 함께 올라왔고, daily_stock_analysis처럼 LLM 기반 자동화 시스템도 눈에 띕니다. 백엔드·인프라 쪽에서는 Prometheus, Keycloak, Terraform 모듈 등 검증된 도구의 꾸준한 관심이 이어졌습니다.",
+  "warnings": [],
+  "top": [
+    {
+      "rank": 1,
+      "full_name": "sherlock-project/sherlock",
+      "url": "https://github.com/sherlock-project/sherlock",
+      "what": "여러 소셜 네트워크에서 사용자명으로 계정을 찾아주는 Python 기반 CLI 도구 sherlock이다."
+    },
+    {
+      "rank": 2,
+      "full_name": "anthropics/skills",
+      "url": "https://github.com/anthropics/skills",
+      "what": "Anthropic이 공개한 Claude용 Agent Skills 예제 레포로, 지침·스크립트·리소스를 담은 폴더 단위 스킬 모음이다."
+    },
+    {
+      "rank": 3,
+      "full_name": "milind-soni/OpenMausBot",
+      "url": "https://github.com/milind-soni/OpenMausBot",
+      "what": "Grok Bot의 오픈소스 대안으로, 각자 모델과 가상 컴퓨터를 가진 AI 봇 팀을 채팅 앱에서 운영하는 TypeScript/Electron 데스크톱 앱이다."
+    },
+    {
+      "rank": 4,
+      "full_name": "vercel-labs/agent-browser",
+      "url": "https://github.com/vercel-labs/agent-browser",
+      "what": "AI 에이전트가 셸 명령으로 브라우저를 제어하도록 만든 Rust 기반 CLI 도구 agent-browser다."
+    },
+    {
+      "rank": 5,
+      "full_name": "google/elephant-goldfish-model",
+      "url": "https://github.com/google/elephant-goldfish-model",
+      "what": "AI 어시스턴트용 오픈소스 플러그인으로, 에이전트와 함께 소프트웨어 설계를 하고 리뷰하는 워크플로를 제공한다."
+    },
+    {
+      "rank": 6,
+      "full_name": "ZhuLinsen/daily_stock_analysis",
+      "url": "https://github.com/ZhuLinsen/daily_stock_analysis",
+      "what": "LLM으로 A주·홍콩·미국·일본·한국·대만 주식을 분석해 결정 대시보드를 만들고 메신저로 자동 발송하는 Python 시스템입니다."
+    },
+    {
+      "rank": 7,
+      "full_name": "NVIDIA/auto-ontology",
+      "url": "https://github.com/NVIDIA/auto-ontology",
+      "what": "NVIDIA의 Python 기반 오픈소스 라이브러리로, 기업 메타데이터로부터 용어·관계·SQL 속성을 담은 온톨로지(시맨틱 컨텍스트 레이어)를 구축한다."
+    },
+    {
+      "rank": 8,
+      "full_name": "google-deepmind/mujoco",
+      "url": "https://github.com/google-deepmind/mujoco",
+      "what": "MuJoCo는 관절 구조물과 접촉 역학을 빠르고 정확하게 시뮬레이션하는 C 기반 범용 물리 엔진이다."
+    },
+    {
+      "rank": 9,
+      "full_name": "mattpocock/skills",
+      "url": "https://github.com/mattpocock/skills",
+      "what": "Matt Pocock의 실사용 에이전트 스킬 모음으로, 코딩 에이전트용 SKILL.md 파일들을 담은 Shell 레포다."
+    },
+    {
+      "rank": 10,
+      "full_name": "addyosmani/agent-skills",
+      "url": "https://github.com/addyosmani/agent-skills",
+      "what": "AI 코딩 에이전트가 시니어 엔지니어의 개발 워크플로와 품질 게이트를 따르도록 패키징한 25개 스킬 모음입니다."
+    }
+  ],
+  "categories": [
+    {
+      "title": "🧱 백엔드",
+      "first": {
+        "full_name": "prometheus/prometheus",
+        "url": "https://github.com/prometheus/prometheus",
+        "what": "Prometheus는 CNCF 프로젝트인 시스템·서비스 모니터링 도구이자 시계열 데이터베이스로, 다차원 메트릭을 수집·저장·질의한다."
+      }
+    },
+    {
+      "title": "☁️ 인프라 / DevOps",
+      "first": {
+        "full_name": "terraform-aws-modules/terraform-aws-eks",
+        "url": "https://github.com/terraform-aws-modules/terraform-aws-eks",
+        "what": "Amazon EKS(Kubernetes) 클러스터와 관련 리소스를 생성하는 Terraform 모듈 terraform-aws-eks입니다."
+      }
+    },
+    {
+      "title": "🎨 프론트엔드",
+      "first": {
+        "full_name": "CorentinTh/it-tools",
+        "url": "https://github.com/CorentinTh/it-tools",
+        "what": "개발자와 IT 종사자를 위한 다양한 온라인 도구 모음으로, Vue 기반의 뛰어난 UX를 제공하는 프로젝트다."
+      }
+    },
+    {
+      "title": "🖌️ 디자인 / 그래픽",
+      "first": {
+        "full_name": "sixthsurge/photon",
+        "url": "https://github.com/sixthsurge/photon",
+        "what": "Photon Shaders는 마인크래프트용 게임플레이 중심 셰이더 팩으로, GLSL로 작성된 GitHub 레포입니다."
+      }
+    }
+  ]
+}
