@@ -1,32 +1,27 @@
 """Slack Incoming Webhook notifications.
 
 Usage:
-  python -m trend.notify   # post the digest from data/latest.json
+  python -m trend.notify   # post this week's report (weekly/<week>.md) to Slack as-is
 (Failure alerts are sent with curl directly from the workflow.)
 Does nothing (exit 0) when SLACK_WEBHOOK_URL is unset.
+
+The Markdown file is sent verbatim via Slack's `markdown` block, which renders standard
+Markdown. Slack caps markdown blocks at 12,000 chars per message, so longer reports are
+split at heading boundaries into several consecutive messages.
 """
 
 import argparse
 import json
 import os
+import re
 import sys
 from pathlib import Path
 
 import httpx
 
-SECTION_LIMIT = 2900  # Slack caps section text at 3000 chars
-
-
-def _esc(text: str) -> str:
-    return text.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
-
-
-def _link(url: str, label: str) -> str:
-    return f"<{url}|{_esc(label)}>"
-
-
-def _section(text: str) -> dict:
-    return {"type": "section", "text": {"type": "mrkdwn", "text": text[:SECTION_LIMIT]}}
+MESSAGE_LIMIT = 11_500  # Slack: 12,000 chars of markdown-block text per payload (leave headroom)
+_SECTION_SPLIT = re.compile(r"(?m)^(?=## )")   # prefer breaking between ## sections
+_ITEM_SPLIT = re.compile(r"(?m)^(?=### )")     # fall back to ### items inside an oversized section
 
 
 def _repo_base() -> str:
@@ -34,21 +29,43 @@ def _repo_base() -> str:
     return f"{server}/{os.environ.get('GITHUB_REPOSITORY', '')}"
 
 
-def build_digest(latest: dict, repo_base: str) -> dict:
-    report_url = f"{repo_base}/blob/main/{latest['report_path']}"
-    blocks: list[dict] = [
-        {"type": "header", "text": {"type": "plain_text", "text": f"🔥 GitHub 주간 트렌드 {latest['week']}"}},
+def _units(md: str, limit: int) -> list[str]:
+    out: list[str] = []
+    for section in (u for u in _SECTION_SPLIT.split(md) if u.strip()):
+        for unit in [section] if len(section) <= limit else _ITEM_SPLIT.split(section):
+            while len(unit) > limit:  # still oversized: hard-cut at a line break
+                cut = unit.rfind("\n", 0, limit) + 1 or limit
+                out.append(unit[:cut])
+                unit = unit[cut:]
+            if unit.strip():
+                out.append(unit)
+    return out
+
+
+def split_markdown(md: str, limit: int = MESSAGE_LIMIT) -> list[str]:
+    """Pack heading-delimited units into chunks of at most `limit` chars."""
+    units = _units(md, limit)
+    chunks: list[str] = []
+    for unit in units:
+        if chunks and len(chunks[-1]) + len(unit) <= limit:
+            chunks[-1] += unit
+        else:
+            chunks.append(unit)
+    return [c.strip() for c in chunks]
+
+
+def build_messages(markdown: str, week: str, report_url: str) -> list[dict]:
+    footer = f"\n\n👉 [GitHub에서 보기]({report_url})"
+    chunks = split_markdown(markdown, MESSAGE_LIMIT - len(footer))
+    chunks[-1] += footer
+    n = len(chunks)
+    return [
+        {
+            "text": f"GitHub 주간 트렌드 {week}" + (f" ({i}/{n})" if n > 1 else ""),
+            "blocks": [{"type": "markdown", "text": chunk}],
+        }
+        for i, chunk in enumerate(chunks, 1)
     ]
-    if latest.get("warnings"):
-        blocks.append(_section("\n".join(f"⚠️ {_esc(w)}" for w in latest["warnings"])))
-    blocks.append(_section(f"*📝 이번 주 총평*\n{_esc(latest['overview'])}"))
-    top = "\n".join(f"{t['rank']}. {_link(t['url'], t['full_name'])} — {_esc(t['what'][:90])}" for t in latest["top"])
-    blocks.append(_section(f"*🏆 종합 Top {len(latest['top'])}*\n{top}"))
-    for c in latest["categories"]:
-        lines = [f"• {_link(i['url'], i['full_name'])} — {_esc(i['what'][:80])}" for i in c["items"]] or ["_이번 주 없음_"]
-        blocks.append(_section(f"*{_esc(c['title'])}*\n" + "\n".join(lines)))
-    blocks.append(_section(f"👉 {_link(report_url, '전체 리포트 보기')}"))
-    return {"text": f"GitHub 주간 트렌드 {latest['week']}", "blocks": blocks}
 
 
 def post(webhook: str, payload: dict) -> None:
@@ -65,9 +82,13 @@ def main() -> int:
     if not webhook:
         print("SLACK_WEBHOOK_URL not set; skipping Slack notification")
         return 0
-    payload = build_digest(json.loads(args.latest.read_text(encoding="utf-8")), _repo_base())
-    post(webhook, payload)
-    print("Slack notification sent")
+    latest = json.loads(args.latest.read_text(encoding="utf-8"))
+    report_path = latest["report_path"]
+    markdown = (args.latest.parent.parent / report_path).read_text(encoding="utf-8")
+    messages = build_messages(markdown, latest["week"], f"{_repo_base()}/blob/main/{report_path}")
+    for payload in messages:  # sequential so the parts arrive in order
+        post(webhook, payload)
+    print(f"Slack notification sent ({len(messages)} message(s))")
     return 0
 
 

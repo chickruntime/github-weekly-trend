@@ -5,7 +5,7 @@ from trend.config import Category, load_config
 from trend.history import History, previous_week, week_of, week_range
 from trend.llm import FallbackSummarizer, _Pick, _CategoryPicks, _SelectionOut, _validate_selection, clean_text
 from trend.models import Entry, Repo, Summary
-from trend.notify import build_digest
+from trend.notify import build_messages, split_markdown
 from trend.render import Report, render_index, render_report
 from trend.scrape import parse_trending
 
@@ -141,23 +141,31 @@ def test_render_index_lists_newest_first(tmp_path):
 
 # --- slack ---
 
-def test_slack_digest_escapes_and_links():
-    latest = {
-        "week": "2026-W46", "report_path": "weekly/2026-W46.md", "overview": "a <b> & c", "warnings": [],
-        "top": [{"rank": 1, "full_name": "a/a", "url": "https://github.com/a/a", "what": "x"}],
-        "categories": [
-            {"title": "FE", "items": [{"full_name": f"f/{n}", "url": f"https://github.com/f/{n}", "what": "w"} for n in range(5)]},
-            {"title": "BE", "items": []},
-        ],
-    }
-    payload = build_digest(latest, "https://github.com/me/repo")
-    text = str(payload)
-    assert all(f"<https://github.com/f/{n}|f/{n}>" in text for n in range(5))
-    texts = [b["text"]["text"] for b in payload["blocks"] if b["type"] == "section"]
-    assert "*BE*\n_이번 주 없음_" in texts
-    assert "a &lt;b&gt; &amp; c" in text
-    assert "<https://github.com/a/a|a/a>" in text
-    assert "<https://github.com/me/repo/blob/main/weekly/2026-W46.md|전체 리포트 보기>" in text
+def test_slack_sends_report_markdown_verbatim():
+    md = "# T\n\n## A\n\n- [x/y](https://github.com/x/y) **bold**\n"
+    msgs = build_messages(md, "2026-W46", "https://github.com/me/repo/blob/main/weekly/2026-W46.md")
+    assert len(msgs) == 1
+    block = msgs[0]["blocks"][0]
+    assert block["type"] == "markdown"
+    assert block["text"].startswith(md.strip())
+    assert block["text"].endswith("[GitHub에서 보기](https://github.com/me/repo/blob/main/weekly/2026-W46.md)")
+
+
+def test_slack_splits_long_report_at_headings_without_losing_content():
+    sections = [f"### item {i}\n\n" + "가" * 300 + "\n\n" for i in range(10)]
+    md = "# T\n\n" + "".join(sections)
+    chunks = split_markdown(md, limit=1000)
+    assert len(chunks) > 1
+    assert all(len(c) <= 1000 for c in chunks)
+    assert all(c.startswith("#") for c in chunks)
+    assert "".join(chunks).replace("\n", "") == md.replace("\n", "")
+
+
+def test_slack_splits_real_report_under_limit():
+    md = sorted((ROOT / "weekly").glob("*.md"))[-1].read_text(encoding="utf-8")
+    msgs = build_messages(md, "w", "https://x")
+    assert all(len(m["blocks"][0]["text"]) <= 12_000 for m in msgs)
+    assert msgs[-1]["text"].endswith(f"({len(msgs)}/{len(msgs)})") or len(msgs) == 1
 
 
 def test_repo_config_loads():
