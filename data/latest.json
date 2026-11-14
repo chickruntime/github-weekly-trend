@@ -1,0 +1,104 @@
+{
+  "week": "2026-W46",
+  "report_path": "weekly/2026-W46.md",
+  "overview": "(LLM 요약이 비활성화되어 총평이 생략되었습니다.)",
+  "warnings": [
+    "Claude 호출 37건이 실패해 일부 내용을 레포 설명으로 대체했습니다."
+  ],
+  "top": [
+    {
+      "rank": 1,
+      "full_name": "sherlock-project/sherlock",
+      "url": "https://github.com/sherlock-project/sherlock",
+      "what": "Hunt down social media accounts by username across social networks"
+    },
+    {
+      "rank": 2,
+      "full_name": "anthropics/skills",
+      "url": "https://github.com/anthropics/skills",
+      "what": "Public repository for Agent Skills"
+    },
+    {
+      "rank": 3,
+      "full_name": "milind-soni/OpenMausBot",
+      "url": "https://github.com/milind-soni/OpenMausBot",
+      "what": "Open-source Grok Bot alternative with a virtual machine that bots can use"
+    },
+    {
+      "rank": 4,
+      "full_name": "vercel-labs/agent-browser",
+      "url": "https://github.com/vercel-labs/agent-browser",
+      "what": "Browser automation CLI for AI agents"
+    },
+    {
+      "rank": 5,
+      "full_name": "google/elephant-goldfish-model",
+      "url": "https://github.com/google/elephant-goldfish-model",
+      "what": "Open-source plugin for designing and reviewing software with agents"
+    },
+    {
+      "rank": 6,
+      "full_name": "ZhuLinsen/daily_stock_analysis",
+      "url": "https://github.com/ZhuLinsen/daily_stock_analysis",
+      "what": "LLM 驱动的多市场股票智能分析系统：多源行情、实时新闻、决策看板与自动推送，支持零成本定时运行。  LLM-powered multi-market stock analysis system with multi-source market data, real-time news, decision dashboard, automated notifications, and cost-free scheduled runs."
+    },
+    {
+      "rank": 7,
+      "full_name": "NVIDIA/auto-ontology",
+      "url": "https://github.com/NVIDIA/auto-ontology",
+      "what": "Auto Ontology is a Python framework for building semantic, graph-based reasoning layers over data. It enables deterministic query generation, better context retrieval, and more explainable AI for LLM and agent workflows."
+    },
+    {
+      "rank": 8,
+      "full_name": "google-deepmind/mujoco",
+      "url": "https://github.com/google-deepmind/mujoco",
+      "what": "Multi-Joint dynamics with Contact. A general purpose physics simulator."
+    },
+    {
+      "rank": 9,
+      "full_name": "mattpocock/skills",
+      "url": "https://github.com/mattpocock/skills",
+      "what": "Skills for Real Engineers. Straight from my .agents directory."
+    },
+    {
+      "rank": 10,
+      "full_name": "addyosmani/agent-skills",
+      "url": "https://github.com/addyosmani/agent-skills",
+      "what": "Production-grade engineering skills for AI coding agents."
+    }
+  ],
+  "categories": [
+    {
+      "title": "🧱 백엔드",
+      "first": {
+        "full_name": "prometheus/prometheus",
+        "url": "https://github.com/prometheus/prometheus",
+        "what": "The Prometheus monitoring system and time series database."
+      }
+    },
+    {
+      "title": "☁️ 인프라 / DevOps",
+      "first": {
+        "full_name": "GoogleCloudPlatform/cloud-foundation-fabric",
+        "url": "https://github.com/GoogleCloudPlatform/cloud-foundation-fabric",
+        "what": "End-to-end modular samples and landing zones toolkit for Terraform on GCP."
+      }
+    },
+    {
+      "title": "🎨 프론트엔드",
+      "first": {
+        "full_name": "lobehub/lobehub",
+        "url": "https://github.com/lobehub/lobehub",
+        "what": "🤯 LobeHub - Super-Agents on Your Team. Add super-agents to the chats your team already uses.They take on work by themselves and get better every week."
+      }
+    },
+    {
+      "title": "🖌️ 디자인 / 그래픽",
+      "first": {
+        "full_name": "KhronosGroup/SPIRV-Cross",
+        "url": "https://github.com/KhronosGroup/SPIRV-Cross",
+        "what": "SPIRV-Cross is a practical tool and library for performing reflection on SPIR-V and disassembling SPIR-V back to high level languages."
+      }
+    }
+  ]
+}
