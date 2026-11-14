@@ -116,13 +116,15 @@ OVERVIEW_SYSTEM = (
 
 
 class ClaudeSummarizer:
-    def __init__(self, model: str):
-        self.client = anthropic.Anthropic()
+    def __init__(self, model: str, client: anthropic.Anthropic):
+        self.client = client
         self.model = model
         self.fallback = FallbackSummarizer()
+        self.calls = 0
         self.failures = 0
 
     def _parse(self, system: str, content: str, schema: type[BaseModel], max_tokens: int):
+        self.calls += 1
         resp = self.client.messages.parse(
             model=self.model,
             max_tokens=max_tokens,

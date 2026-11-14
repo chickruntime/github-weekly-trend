@@ -19,7 +19,7 @@
 ### A. Workload Identity Federation (권장, 저장되는 키 없음)
 
 Claude Console → Workload identity → Connect workload → GitHub Actions 마법사로 생성합니다.
-연동 규칙의 subject는 `repo:chickruntime/github-weekly-trend:ref:refs/heads/main`, audience는 `https://api.anthropic.com`입니다.
+연동 규칙의 subject는 아래 ID 포함 형식, audience는 `https://api.anthropic.com`입니다.
 그다음 레포 **Settings → Secrets and variables → Actions → Variables** 탭에 아래 3개를 등록합니다. 식별자일 뿐 비밀 값은 아닙니다.
 
 | Variable | 값 |
@@ -28,7 +28,8 @@ Claude Console → Workload identity → Connect workload → GitHub Actions 마
 | `ANTHROPIC_SERVICE_ACCOUNT_ID` | `svac_...` |
 | `ANTHROPIC_FEDERATION_RULE_ID` | `fdrl_...` |
 
-실행 중에는 GitHub OIDC 토큰이 약 5분마다 만료되므로, `trend/wif.py`가 3분마다 새 토큰을 받아옵니다.
+GitHub OIDC 토큰은 약 5분 뒤 만료되고 한 번 교환한 토큰은 재사용할 수 없으므로, `trend/wif.py`가 토큰 교환 때마다 새 토큰을 받아옵니다.
+제목 패턴에는 GitHub이 보내는 ID 포함 형식(`repo:chickruntime@202691568/github-weekly-trend@1457218613:ref:refs/heads/main`)을 그대로 씁니다.
 인증이 실패하면 Console의 Workload identity → 인증 기록 탭에서 거부 사유를 볼 수 있습니다.
 
 ### B. API 키

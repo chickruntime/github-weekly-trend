@@ -74,13 +74,13 @@ def collect_category_pools(client: httpx.Client, cfg: Config, today: date) -> di
     return pools
 
 
-def run(cfg: Config, out: Path, today: date, use_llm: bool) -> Path:
+def run(cfg: Config, out: Path, today: date, claude: anthropic.Anthropic | None) -> Path:
     week = week_of(today)
     start, end = week_range(week)
     history = History(out / "data" / "history.json")
-    summarizer = ClaudeSummarizer(cfg.model) if use_llm else FallbackSummarizer()
+    summarizer = ClaudeSummarizer(cfg.model, claude) if claude else FallbackSummarizer()
     warnings: list[str] = []
-    if not use_llm:
+    if not claude:
         warnings.append("LLM 요약 없이 생성되었습니다 (레포 설명으로 대체).")
 
     with github_api.make_client() as client:
@@ -119,6 +119,8 @@ def run(cfg: Config, out: Path, today: date, use_llm: bool) -> Path:
         [f"{e.repo.full_name}: {e.summary.what}" for e in top_entries]
         + [f"[{c.id}] {e.repo.full_name}: {e.summary.what}" for c, es in cat_entries for e in es]
     )
+    if isinstance(summarizer, ClaudeSummarizer) and summarizer.failures * 2 > summarizer.calls:
+        raise SystemExit(f"{summarizer.failures}/{summarizer.calls} Claude calls failed; aborting before any commit")
     if isinstance(summarizer, ClaudeSummarizer) and summarizer.failures:
         warnings.append(f"Claude 호출 {summarizer.failures}건이 실패해 일부 내용을 레포 설명으로 대체했습니다.")
 
@@ -153,11 +155,11 @@ def _write_latest(path: Path, rep: Report) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def preflight_auth() -> None:
+def preflight_auth(claude: anthropic.Anthropic) -> None:
     """Fail the run (no commit) on credential misconfiguration instead of silently
     producing a summary-less report that would also pollute history."""
     try:
-        anthropic.Anthropic().models.list(limit=1)
+        claude.models.list(limit=1)
     except anthropic.AnthropicError as e:
         raise SystemExit(f"Claude authentication failed; aborting before any commit: {e}") from e
 
@@ -178,13 +180,16 @@ def main() -> None:
     use_llm = not args.no_llm and (bool(os.environ.get("ANTHROPIC_API_KEY")) or use_wif)
     if not args.no_llm and not use_llm:
         log.warning("no Anthropic credentials (API key or WIF); running without LLM")
-    if use_llm and use_wif and not os.environ.get("ANTHROPIC_API_KEY"):
-        wif.start_token_refresher()
-        log.info("using Workload Identity Federation")
+    claude = None
     if use_llm:
-        preflight_auth()
+        if os.environ.get("ANTHROPIC_API_KEY"):
+            claude = anthropic.Anthropic()
+        else:
+            log.info("using Workload Identity Federation")
+            claude = anthropic.Anthropic(credentials=wif.make_credentials())
+        preflight_auth(claude)
     today = args.date or datetime.now(KST).date()
-    path = run(load_config(args.config), args.out, today, use_llm)
+    path = run(load_config(args.config), args.out, today, claude)
     print(f"wrote {path}")
 
 
