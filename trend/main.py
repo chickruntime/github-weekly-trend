@@ -150,7 +150,7 @@ def _write_latest(path: Path, rep: Report) -> None:
         "overview": rep.overview,
         "warnings": rep.warnings,
         "top": [{"rank": e.rank, **item(e)} for e in rep.top],
-        "categories": [{"title": c.title, "first": item(es[0]) if es else None} for c, es in rep.categories],
+        "categories": [{"title": c.title, "items": [item(e) for e in es]} for c, es in rep.categories],
     }
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 

@@ -145,10 +145,16 @@ def test_slack_digest_escapes_and_links():
     latest = {
         "week": "2026-W46", "report_path": "weekly/2026-W46.md", "overview": "a <b> & c", "warnings": [],
         "top": [{"rank": 1, "full_name": "a/a", "url": "https://github.com/a/a", "what": "x"}],
-        "categories": [{"title": "FE", "first": None}],
+        "categories": [
+            {"title": "FE", "items": [{"full_name": f"f/{n}", "url": f"https://github.com/f/{n}", "what": "w"} for n in range(5)]},
+            {"title": "BE", "items": []},
+        ],
     }
     payload = build_digest(latest, "https://github.com/me/repo")
     text = str(payload)
+    assert all(f"<https://github.com/f/{n}|f/{n}>" in text for n in range(5))
+    texts = [b["text"]["text"] for b in payload["blocks"] if b["type"] == "section"]
+    assert "*BE*\n_이번 주 없음_" in texts
     assert "a &lt;b&gt; &amp; c" in text
     assert "<https://github.com/a/a|a/a>" in text
     assert "<https://github.com/me/repo/blob/main/weekly/2026-W46.md|전체 리포트 보기>" in text

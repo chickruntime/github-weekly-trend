@@ -44,13 +44,9 @@ def build_digest(latest: dict, repo_base: str) -> dict:
     blocks.append(_section(f"*📝 이번 주 총평*\n{_esc(latest['overview'])}"))
     top = "\n".join(f"{t['rank']}. {_link(t['url'], t['full_name'])} — {_esc(t['what'][:90])}" for t in latest["top"])
     blocks.append(_section(f"*🏆 종합 Top {len(latest['top'])}*\n{top}"))
-    cat_lines = []
     for c in latest["categories"]:
-        first = c.get("first")
-        body = f"{_link(first['url'], first['full_name'])} — {_esc(first['what'][:80])}" if first else "_없음_"
-        cat_lines.append(f"*{_esc(c['title'])}* {body}")
-    if cat_lines:
-        blocks.append(_section("*분야별 1위*\n" + "\n".join(cat_lines)))
+        lines = [f"• {_link(i['url'], i['full_name'])} — {_esc(i['what'][:80])}" for i in c["items"]] or ["_이번 주 없음_"]
+        blocks.append(_section(f"*{_esc(c['title'])}*\n" + "\n".join(lines)))
     blocks.append(_section(f"👉 {_link(report_url, '전체 리포트 보기')}"))
     return {"text": f"GitHub 주간 트렌드 {latest['week']}", "blocks": blocks}
 
