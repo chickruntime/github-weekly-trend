@@ -12,6 +12,7 @@ import time
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
+import anthropic
 import httpx
 
 from trend import github_api, scrape, wif
@@ -152,6 +153,15 @@ def _write_latest(path: Path, rep: Report) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def preflight_auth() -> None:
+    """Fail the run (no commit) on credential misconfiguration instead of silently
+    producing a summary-less report that would also pollute history."""
+    try:
+        anthropic.Anthropic().models.list(limit=1)
+    except anthropic.AnthropicError as e:
+        raise SystemExit(f"Claude authentication failed; aborting before any commit: {e}") from e
+
+
 def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
     ap = argparse.ArgumentParser()
@@ -171,6 +181,8 @@ def main() -> None:
     if use_llm and use_wif and not os.environ.get("ANTHROPIC_API_KEY"):
         wif.start_token_refresher()
         log.info("using Workload Identity Federation")
+    if use_llm:
+        preflight_auth()
     today = args.date or datetime.now(KST).date()
     path = run(load_config(args.config), args.out, today, use_llm)
     print(f"wrote {path}")

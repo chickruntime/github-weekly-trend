@@ -5,6 +5,8 @@ The Anthropic SDK re-reads ANTHROPIC_IDENTITY_TOKEN_FILE whenever it refreshes i
 token, so a background thread rewrites the file every few minutes.
 """
 
+import base64
+import json
 import logging
 import os
 import threading
@@ -32,6 +34,14 @@ def _fetch_github_jwt() -> str:
     return resp.json()["value"]
 
 
+def describe_claims(jwt: str) -> dict:
+    """Decode the (unverified) payload for diagnostics. Never log the token itself."""
+    payload = jwt.split(".")[1]
+    claims = json.loads(base64.urlsafe_b64decode(payload + "=" * (-len(payload) % 4)))
+    keys = ("iss", "sub", "aud", "repository", "repository_owner", "ref", "event_name")
+    return {k: claims.get(k) for k in keys}
+
+
 def _write(path: Path) -> None:
     tmp = path.with_suffix(".tmp")
     tmp.write_text(_fetch_github_jwt(), encoding="utf-8")
@@ -45,6 +55,7 @@ def start_token_refresher() -> None:
         return
     path = Path(os.environ["ANTHROPIC_IDENTITY_TOKEN_FILE"])
     _write(path)
+    log.info("GitHub OIDC claims: %s", describe_claims(path.read_text(encoding="utf-8")))
     stop = threading.Event()
 
     def loop() -> None:
