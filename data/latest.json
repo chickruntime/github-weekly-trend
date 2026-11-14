@@ -1,68 +1,68 @@
 {
   "week": "2026-W46",
   "report_path": "weekly/2026-W46.md",
-  "overview": "이번 주 트렌드는 에이전트를 위한 도구와 워크플로가 중심이다. anthropics/skills와 mattpocock/skills, addyosmani/agent-skills처럼 코딩 에이전트에 스킬을 얹는 저장소가 여럿 올라왔고, vercel-labs/agent-browser와 google/elephant-goldfish-model도 에이전트가 브라우저와 설계 검토를 직접 다루는 방향을 보여준다. 한편 prometheus/prometheus, elastic/elasticsearch, keycloak/keycloak 같은 백엔드 인프라 프로젝트는 꾸준한 기본기를 유지하고 있다.",
+  "overview": "이번 주 트렌드는 AI 코딩 에이전트를 위한 스킬과 도구에 집중됐습니다. anthropics/skills, mattpocock/skills, addyosmani/agent-skills처럼 에이전트 스킬 모음이 연달아 주목받았고, vercel-labs/agent-browser나 google/elephant-goldfish-model처럼 에이전트가 브라우저나 설계 문서를 직접 다루는 도구도 눈에 띕니다. 여기에 디자인 영역에서는 paper-figure-to-figma처럼 에이전트 스킬을 Figma 작업에 적용하는 사례가 함께 나타나, 에이전트 생태계가 개발을 넘어 디자인으로 넓어지는 흐름이 보입니다.",
   "warnings": [],
   "top": [
     {
       "rank": 1,
       "full_name": "sherlock-project/sherlock",
       "url": "https://github.com/sherlock-project/sherlock",
-      "what": "sherlock-project/sherlock는 사용자명 하나로 400여 개 소셜 네트워크에서 계정을 찾아주는 Python CLI 도구다."
+      "what": "Sherlock은 사용자명 하나로 400개 이상 소셜 네트워크에서 계정을 찾아주는 Python CLI 도구다."
     },
     {
       "rank": 2,
       "full_name": "anthropics/skills",
       "url": "https://github.com/anthropics/skills",
-      "what": "Anthropic이 공개한 Claude용 Agent Skills 예제 저장소로, 指示문·스크립트·리소스를 담은 SKILL.md 폴더 모음이다."
+      "what": "Anthropic이 공개한 Claude용 Agent Skills 예제 레포로, 지침·스크립트·리소스를 담은 폴더 단위 스킬 모음이다."
     },
     {
       "rank": 3,
       "full_name": "milind-soni/OpenMausBot",
       "url": "https://github.com/milind-soni/OpenMausBot",
-      "what": "Grok Bot의 오픈소스 대안으로, 각 봇이 자체 모델, 클라우드 컴퓨터, 연결 앱을 가진 AI 에이전트 팀을 채팅 앱에서 운영하는 TypeScript/Electron 프로젝트다."
+      "what": "Grok Bot의 오픈소스 대안으로, 각 봇이 자체 모델·클라우드 컴퓨터·앱을 가진 채팅형 AI 에이전트 팀을 로컬에서 운영하는 TypeScript/Electron 앱이다."
     },
     {
       "rank": 4,
       "full_name": "vercel-labs/agent-browser",
       "url": "https://github.com/vercel-labs/agent-browser",
-      "what": "AI 에이전트가 셸 명령으로 브라우저를 제어하도록 만든 Rust 기반 CLI 도구 agent-browser다."
+      "what": "AI 에이전트가 셸 명령으로 브라우저를 조작할 수 있게 해주는 Rust 기반 CLI, agent-browser다. snapshot으로 접근성 트리와 ref를 받아 요소를 클릭·입력한다."
     },
     {
       "rank": 5,
       "full_name": "google/elephant-goldfish-model",
       "url": "https://github.com/google/elephant-goldfish-model",
-      "what": "AI 어시스턴트용 오픈소스 플러그인으로, 에이전트가 설계 명세를 초안 작성하고 새 컨텍스트의 리뷰어(goldfish)가 검토하는 워크플로를 제공한다."
+      "what": "AI 코딩 에이전트용 오픈소스 플러그인으로, 엘리펀트(맥락 보유 작성자)와 골드피시(맥락 없는 리뷰어) 구조로 소프트웨어 설계 문서를 작성·검토한다."
     },
     {
       "rank": 6,
       "full_name": "ZhuLinsen/daily_stock_analysis",
       "url": "https://github.com/ZhuLinsen/daily_stock_analysis",
-      "what": "LLM 기반 다중 시장(A주·홍콩·미국·일본·한국·대만) 주식 분석 시스템으로, 시세·뉴스 수집부터 AI 결정 대시보드 작성과 알림 발송까지 자동화한다."
+      "what": "LLM 기반 다중 시장 주식 분석 시스템으로, 시세·뉴스를 모아 결정 대시보드를 만들고 메신저로 자동 발송한다."
     },
     {
       "rank": 7,
       "full_name": "NVIDIA/auto-ontology",
       "url": "https://github.com/NVIDIA/auto-ontology",
-      "what": "NVIDIA Auto Ontology는 메타데이터로부터 시맨틱 온톨로지와 지식 그래프를 만들어 에이전트에 비즈니스 문맥을 제공하는 Python 기반 오픈 라이브러리다."
+      "what": "NVIDIA Auto Ontology는 메타데이터로부터 엔터프라이즈 온톨로지를 생성하고 MCP, CLI, API로 에이전트에 컨텍스트를 제공하는 Python 기반 시맨틱 레이어다."
     },
     {
       "rank": 8,
       "full_name": "google-deepmind/mujoco",
       "url": "https://github.com/google-deepmind/mujoco",
-      "what": "google-deepmind/mujoco는 관절 구조물과 접촉을 빠르고 정확하게 시뮬레이션하는 C 기반 범용 물리 엔진이다."
+      "what": "google-deepmind/mujoco는 관절 구조물과 접촉 역학을 빠르고 정확하게 시뮬레이션하는 C 기반 범용 물리 엔진이다."
     },
     {
       "rank": 9,
       "full_name": "mattpocock/skills",
       "url": "https://github.com/mattpocock/skills",
-      "what": "Matt Pocock의 실사용 에이전트 스킬 모음 레포로, 코딩 에이전트(Claude Code, Codex 등)용 엔지니어링·생산성 스킬을 담고 있다."
+      "what": "Matt Pocock이 실제 개발에 쓰는 에이전트 스킬 모음으로, Claude Code·Codex·Copilot 등에서 설치해 쓰는 Shell 기반 레포다."
     },
     {
       "rank": 10,
       "full_name": "addyosmani/agent-skills",
       "url": "https://github.com/addyosmani/agent-skills",
-      "what": "AI 코딩 에이전트가 시스템 설계부터 배포까지 시니어 엔지니어 수준의 워크플로와 품질 게이트를 따르도록 돕는 25개 스킬 모음 레포다."
+      "what": "AI 코딩 에이전트가 시스템 기획부터 배포까지 따를 수 있도록 엔지니어링 워크플로와 품질 게이트를 패키징한 agent-skills 레포다."
     }
   ],
   "categories": [
@@ -71,7 +71,7 @@
       "first": {
         "full_name": "prometheus/prometheus",
         "url": "https://github.com/prometheus/prometheus",
-        "what": "Prometheus는 시계열 데이터를 수집·저장·질의하고 알림을 보내는 CNCF 모니터링 시스템이자 시계열 데이터베이스다."
+        "what": "Prometheus는 CNCF 프로젝트인 시스템·서비스 모니터링 도구이자 시계열 데이터베이스로, 다차원 메트릭을 수집·저장·질의하고 알림을 발생시킨다."
       }
     },
     {
@@ -85,17 +85,17 @@
     {
       "title": "🎨 프론트엔드",
       "first": {
-        "full_name": "CorentinTh/it-tools",
-        "url": "https://github.com/CorentinTh/it-tools",
-        "what": "개발자와 IT 종사자를 위한 다양한 온라인 도구 모음으로, Vue 기반의 깔끔한 UX를 제공하는 레포입니다."
+        "full_name": "animate-css/animate.css",
+        "url": "https://github.com/animate-css/animate.css",
+        "what": "Animate.css는 크로스 브라우저로 동작하는 CSS 애니메이션 라이브러리로, 클래스 하나만 붙이면 요소에 다양한 애니메이션을 적용할 수 있다."
       }
     },
     {
       "title": "🖌️ 디자인 / 그래픽",
       "first": {
-        "full_name": "sloemo01/diorama",
-        "url": "https://github.com/sloemo01/diorama",
-        "what": "Three.js 다이오라마 제작용 플레이북과 코드 키트로, SKILL.md를 중심으로 룩 선택, 에셋 조달, QA 스크립트를 포함한다."
+        "full_name": "sidiangongyuan/paper-figure-to-figma",
+        "url": "https://github.com/sidiangongyuan/paper-figure-to-figma",
+        "what": "연구 논문 그림을 편집 가능한 Figma 벡터(또는 PowerPoint)로 재구성하는 Codex용 에이전트 스킬이다. 텍스트, 곡선, 그라데이션을 네이티브 레이어로 만든다."
       }
     }
   ]
