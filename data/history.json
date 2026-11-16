@@ -1,15 +1,21 @@
 {
   "repos": {
-    "Abdenasser/neohtop": [
+    "CorentinTh/it-tools": [
       "2026-W46"
     ],
-    "CorentinTh/it-tools": [
+    "Dieu-Merci-Ndenga/relay": [
+      "2026-W46"
+    ],
+    "FrigadeHQ/yogurt": [
+      "2026-W46"
+    ],
+    "HybridRobotics/supermimic": [
       "2026-W46"
     ],
     "KhronosGroup/SPIRV-Cross": [
       "2026-W46"
     ],
-    "NVIDIA/auto-ontology": [
+    "OWASP/wstg": [
       "2026-W46"
     ],
     "ZhuLinsen/daily_stock_analysis": [
@@ -21,25 +27,19 @@
     "animate-css/animate.css": [
       "2026-W46"
     ],
-    "anthropics/claude-quickstarts": [
-      "2026-W46"
-    ],
     "anthropics/skills": [
       "2026-W46"
     ],
-    "astral-sh/ruff": [
+    "backnotprop/plannotator": [
       "2026-W46"
     ],
-    "declarative-dragging/dragology": [
+    "dotnet/skills": [
       "2026-W46"
     ],
     "elastic/elasticsearch": [
       "2026-W46"
     ],
-    "genesisdb-io/genesisdb": [
-      "2026-W46"
-    ],
-    "goldbergyoni/nodebestpractices": [
+    "expressjs/express": [
       "2026-W46"
     ],
     "google-deepmind/mujoco": [
@@ -51,40 +51,34 @@
     "keycloak/keycloak": [
       "2026-W46"
     ],
-    "kubehenge/kubehenge": [
+    "louislam/uptime-kuma": [
       "2026-W46"
     ],
     "lucas-martinic/polyfork-catalog": [
       "2026-W46"
     ],
-    "mattpocock/skills": [
+    "meshy-dev/ThreeRT": [
       "2026-W46"
     ],
-    "meshy-dev/ThreeRT": [
+    "meta/astryx": [
       "2026-W46"
     ],
     "milind-soni/OpenMausBot": [
       "2026-W46"
     ],
-    "nix-community/disko": [
-      "2026-W46"
-    ],
     "nix-community/home-manager": [
       "2026-W46"
     ],
-    "nodejs/docker-node": [
+    "pi-hole/pi-hole": [
       "2026-W46"
     ],
-    "prometheus/prometheus": [
-      "2026-W46"
-    ],
-    "quyvu01/jfxmap": [
-      "2026-W46"
-    ],
-    "recepkutuk/canon": [
+    "rivet-dev/open-orange": [
       "2026-W46"
     ],
     "sherlock-project/sherlock": [
+      "2026-W46"
+    ],
+    "skudra-go/ant": [
       "2026-W46"
     ],
     "sloemo01/diorama": [
@@ -99,7 +93,13 @@
     "vercel-labs/agent-browser": [
       "2026-W46"
     ],
-    "zed-industries/zed": [
+    "vercel-labs/ui": [
+      "2026-W46"
+    ],
+    "vladocar/Sumi.css": [
+      "2026-W46"
+    ],
+    "we-promise/sure": [
       "2026-W46"
     ]
   }

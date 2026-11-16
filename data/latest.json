@@ -1,68 +1,68 @@
 {
   "week": "2026-W46",
   "report_path": "weekly/2026-W46.md",
-  "overview": "이번 주 트렌드는 AI 에이전트를 위한 도구와 스킬 생태계로 뚜렷하게 기울었습니다. anthropics/skills와 mattpocock/skills, addyosmani/agent-skills가 Claude Code·Codex 등에서 쓰는 스킬 모음으로 묶이고, vercel-labs/agent-browser나 google/elephant-goldfish-model처럼 에이전트가 브라우저를 조작하거나 설계 문서를 검토하는 도구도 눈에 띕니다. 인프라와 백엔드에서는 terraform-aws-eks, Prometheus 같은 검증된 도구가 꾸준히 주목받은 가운데, 디자인 쪽의 polyfork-catalog와 diorama처럼 3D 웹 제작을 에이전트 스킬로 돕는 흐름도 함께 보였습니다.",
+  "overview": "이번 주는 AI 에이전트를 위한 도구와 스킬이 두드러졌습니다. meta/astryx 같은 React 디자인 시스템부터 anthropics/skills, vercel-labs/agent-browser, google/elephant-goldfish-model까지 에이전트가 UI 작업, 브라우저 제어, 설계 리뷰를 맡는 흐름이 이어졌습니다. 한편 terraform-aws-modules/terraform-aws-eks 같은 인프라 모듈과 Keycloak, Elasticsearch 같은 백엔드 기반 도구도 꾸준히 올라와 실무 수요가 여전함을 보여줍니다.",
   "warnings": [],
   "top": [
     {
       "rank": 1,
-      "full_name": "sherlock-project/sherlock",
-      "url": "https://github.com/sherlock-project/sherlock",
-      "what": "사용자명 하나로 400여 개 소셜 네트워크에서 같은 계정을 찾아주는 Python 기반 CLI 도구 sherlock이다."
+      "full_name": "meta/astryx",
+      "url": "https://github.com/meta/astryx",
+      "what": "Astryx는 Meta가 만든 오픈소스 디자인 시스템으로, React 19+와 StyleX 기반의 150여 개 접근성 컴포넌트, 테마, CLI를 제공한다."
     },
     {
       "rank": 2,
       "full_name": "anthropics/skills",
       "url": "https://github.com/anthropics/skills",
-      "what": "Anthropic이 공개한 Claude용 Agent Skills 예제 레포로, SKILL.md 지침과 스크립트를 담은 폴더 단위 스킬 모음이다."
+      "what": "Anthropic이 공개한 Claude용 Agent Skills 구현 레포로, 지침·스크립트·리소스를 담은 폴더 단위 스킬 예제 모음이다."
     },
     {
       "rank": 3,
-      "full_name": "milind-soni/OpenMausBot",
-      "url": "https://github.com/milind-soni/OpenMausBot",
-      "what": "OpenMausBot는 Grok Bot에 영감을 받은 오픈소스 AI 봇 팀 채팅 앱으로, 각 봇이 클라우드 가상 컴퓨터를 가진 TypeScript/Electron 프로젝트다."
+      "full_name": "sherlock-project/sherlock",
+      "url": "https://github.com/sherlock-project/sherlock",
+      "what": "sherlock-project/sherlock은 사용자명으로 400개 이상의 소셜 네트워크에서 계정을 찾아주는 Python CLI 도구다."
     },
     {
       "rank": 4,
-      "full_name": "vercel-labs/agent-browser",
-      "url": "https://github.com/vercel-labs/agent-browser",
-      "what": "AI 에이전트가 셸에서 브라우저를 조작하도록 돕는 Rust 기반 CLI로, 페이지를 접근성 트리 텍스트로 읽고 @e1 같은 ref로 요소를 제어한다."
+      "full_name": "backnotprop/plannotator",
+      "url": "https://github.com/backnotprop/plannotator",
+      "what": "plannotator/backnotprop의 plannotator는 AI 코딩 에이전트(Claude Code, Codex, OpenCode 등)의 계획·문서·코드 리뷰 결과를 브라우저에서 주석 달고 피드백을 에이전트에 바로 보내는 로컬 리뷰 도구다."
     },
     {
       "rank": 5,
-      "full_name": "google/elephant-goldfish-model",
-      "url": "https://github.com/google/elephant-goldfish-model",
-      "what": "AI 어시스턴트(Claude Code, Codex, Antigravity 등)에서 소프트웨어 설계 문서를 작성하고 검토하는 오픈소스 플러그인 EGM이다. 설계는 맥락을 아는 Elephant, 검토는 대화 맥락 없이 보는 Goldfish 리뷰어가 맡는다."
+      "full_name": "vercel-labs/agent-browser",
+      "url": "https://github.com/vercel-labs/agent-browser",
+      "what": "AI 에이전트가 셸에서 브라우저를 제어할 수 있게 해주는 Rust 기반 CLI 도구로, 접근성 트리 스냅샷의 @e1 같은 ref로 요소를 조작한다."
     },
     {
       "rank": 6,
       "full_name": "ZhuLinsen/daily_stock_analysis",
       "url": "https://github.com/ZhuLinsen/daily_stock_analysis",
-      "what": "LLM 기반 다중 시장(A주·홍콩·미국·일본·한국·대만) 주식 분석 시스템으로, 시세·뉴스 수집부터 결정 대시보드 생성과 알림 푸시까지 자동화한다."
+      "what": "LLM 기반 다중 시장(A주·홍콩·미국·일본·한국·대만) 주식 분석 시스템으로, 시세·뉴스 수집부터 AI 결정 대시보드 작성과 알림 발송까지 자동화한다."
     },
     {
       "rank": 7,
-      "full_name": "NVIDIA/auto-ontology",
-      "url": "https://github.com/NVIDIA/auto-ontology",
-      "what": "NVIDIA Auto Ontology는 메타데이터로부터 엔터프라이즈 온톨로지와 지식 그래프를 만들어 에이전트에 문맥 계층을 제공하는 Python 기반 오픈 라이브러리다."
+      "full_name": "we-promise/sure",
+      "url": "https://github.com/we-promise/sure",
+      "what": "Sure는 Ruby로 만든 오픈소스 개인 재무 관리 앱으로, Docker로 셀프 호스팅하거나 브라우저, macOS, 모바일, API로 사용할 수 있다."
     },
     {
       "rank": 8,
-      "full_name": "google-deepmind/mujoco",
-      "url": "https://github.com/google-deepmind/mujoco",
-      "what": "MuJoCo는 관절 구조물과 접촉 동역학을 빠르고 정확하게 시뮬레이션하는 C 기반 범용 물리 엔진이다."
+      "full_name": "milind-soni/OpenMausBot",
+      "url": "https://github.com/milind-soni/OpenMausBot",
+      "what": "Grok Bot의 오픈소스 대안으로, 각자 모델·컴퓨터·앱을 가진 AI 봇 팀을 채팅 앱에서 운영하는 TypeScript/Electron 데스크톱 프로젝트다."
     },
     {
       "rank": 9,
-      "full_name": "mattpocock/skills",
-      "url": "https://github.com/mattpocock/skills",
-      "what": "Matt Pocock이 실제 엔지니어링에 매일 쓰는 에이전트 스킬 모음으로, Claude Code·Codex·Copilot 등에서 설치해 쓰는 Shell 기반 레포다."
+      "full_name": "google/elephant-goldfish-model",
+      "url": "https://github.com/google/elephant-goldfish-model",
+      "what": "AI 어시스턴트용 오픈소스 플러그인으로, 에이전트와 함께 소프트웨어 설계 문서를 작성하고 리뷰한다. Elephant(맥락 보유 작성), Goldfish(맥락 없는 리뷰어) 구조를 쓴다."
     },
     {
       "rank": 10,
-      "full_name": "addyosmani/agent-skills",
-      "url": "https://github.com/addyosmani/agent-skills",
-      "what": "AI 코딩 에이전트가 시스템 설계부터 배포까지 엔지니어링 워크플로와 품질 게이트를 일관되게 따르도록 패키징한 25개 스킬 모음이다."
+      "full_name": "google-deepmind/mujoco",
+      "url": "https://github.com/google-deepmind/mujoco",
+      "what": "MuJoCo는 관절 구조물과 접촉 역학을 시뮬레이션하는 C/C++ 기반 범용 물리 엔진이다."
     }
   ],
   "categories": [
@@ -70,29 +70,29 @@
       "title": "🧱 백엔드",
       "items": [
         {
-          "full_name": "prometheus/prometheus",
-          "url": "https://github.com/prometheus/prometheus",
-          "what": "Prometheus는 메트릭을 수집·저장하고 PromQL로 조회·알림을 수행하는 Go 기반 모니터링 시스템이자 시계열 데이터베이스다."
+          "full_name": "keycloak/keycloak",
+          "url": "https://github.com/keycloak/keycloak",
+          "what": "Keycloak은 사용자 연합, 강력한 인증, 사용자 관리, 세밀한 권한 부여를 제공하는 오픈소스 IAM(Identity and Access Management) 서버입니다."
         },
         {
           "full_name": "elastic/elasticsearch",
           "url": "https://github.com/elastic/elasticsearch",
-          "what": "Elasticsearch는 Java로 만든 분산형 RESTful 검색·분석 엔진이자 벡터 데이터베이스로, 대규모 데이터에서 근실시간 검색을 제공한다."
+          "what": "Elasticsearch는 Java로 만든 분산형 RESTful 검색·분석 엔진이자 벡터 데이터베이스로, 대규모 데이터의 전문 검색과 벡터 검색을 지원한다."
         },
         {
-          "full_name": "keycloak/keycloak",
-          "url": "https://github.com/keycloak/keycloak",
-          "what": "Keycloak은 사용자 federation, 강력한 인증, 사용자 관리, 세밀한 권한 부여를 제공하는 오픈소스 IAM(Identity and Access Management) 서버입니다."
+          "full_name": "dotnet/skills",
+          "url": "https://github.com/dotnet/skills",
+          "what": "dotnet/skills는 .NET 팀이 큐레이션한 AI 코딩 에이전트용 이식 가능한 스킬과 호스트별 커스텀 에이전트 모음 레포다."
         },
         {
-          "full_name": "genesisdb-io/genesisdb",
-          "url": "https://github.com/genesisdb-io/genesisdb",
-          "what": "GenesisDB는 Go로 작성된 단일 노드 이벤트 소싱 데이터베이스로, CloudEvents 1.0 형식과 SHA-256 해시 체인, GDPR 삭제 기능을 내장하고 있다."
+          "full_name": "Dieu-Merci-Ndenga/relay",
+          "url": "https://github.com/Dieu-Merci-Ndenga/relay",
+          "what": "NestJS와 BullMQ 기반의 TypeScript 웹훅 신뢰성 플랫폼으로, 서명된 이벤트를 저장하고 비동기 전달·재시도·데드레터 복구를 수행한다."
         },
         {
-          "full_name": "quyvu01/jfxmap",
-          "url": "https://github.com/quyvu01/jfxmap",
-          "what": "Java용 FxMap 포트로, DTO의 외래키를 기준으로 다른 마이크로서비스에서 관련 속성을 한 번의 배치 호출로 채워 넣는 분산 데이터 보강 라이브러리다."
+          "full_name": "skudra-go/ant",
+          "url": "https://github.com/skudra-go/ant",
+          "what": "ant는 제네릭을 활용해 컴파일 타임에 타입을 검사하는 Go ORM으로, 코드 생성 없이 일반 구조체를 모델로 사용한다."
         }
       ]
     },
@@ -102,27 +102,27 @@
         {
           "full_name": "terraform-aws-modules/terraform-aws-eks",
           "url": "https://github.com/terraform-aws-modules/terraform-aws-eks",
-          "what": "Amazon EKS(Kubernetes) 클러스터와 관련 리소스를 생성하는 Terraform 모듈 terraform-aws-eks이다."
+          "what": "Amazon EKS(Kubernetes) 클러스터를 Terraform으로 생성하는 공식 모듈로, terraform-aws-modules 조직이 관리하는 terraform-aws-eks 레포다."
         },
         {
           "full_name": "terraform-aws-modules/terraform-aws-vpc",
           "url": "https://github.com/terraform-aws-modules/terraform-aws-vpc",
-          "what": "AWS VPC 리소스(서브넷, NAT 게이트웨이, 라우팅 테이블, NACL 등)를 생성하는 Terraform 모듈이다."
+          "what": "AWS VPC 리소스(서브넷, NAT 게이트웨이, 라우팅, NACL 등)를 생성하는 공식 Terraform 모듈 terraform-aws-modules/vpc입니다."
         },
         {
           "full_name": "nix-community/home-manager",
           "url": "https://github.com/nix-community/home-manager",
-          "what": "Nix 패키지 매니저와 Nixpkgs 라이브러리로 사용자별 패키지와 dotfiles를 선언적으로 관리하는 도구다."
+          "what": "Nix 패키지 매니저와 Nixpkgs 라이브러리로 사용자 환경(사용자별 패키지와 dotfiles)을 선언적으로 관리하는 도구입니다."
         },
         {
-          "full_name": "nix-community/disko",
-          "url": "https://github.com/nix-community/disko",
-          "what": "NixOS에서 디스크 파티셔닝과 포맷을 Nix 코드로 선언적으로 관리하는 도구 disko다."
+          "full_name": "pi-hole/pi-hole",
+          "url": "https://github.com/pi-hole/pi-hole",
+          "what": "Pi-hole는 네트워크 전체에 광고를 차단하는 DNS sinkhole로, 기기에 클라이언트 소프트웨어를 설치하지 않고도 동작하는 Linux 기반 오픈소스 도구다."
         },
         {
-          "full_name": "kubehenge/kubehenge",
-          "url": "https://github.com/kubehenge/kubehenge",
-          "what": "Proxmox VE 위에서 kubeadm, RKE2, k3s, Talos 클러스터를 생성·확장·업그레이드·삭제하는 Go 기반 도구이다."
+          "full_name": "louislam/uptime-kuma",
+          "url": "https://github.com/louislam/uptime-kuma",
+          "what": "Uptime Kuma는 HTTP, TCP, Ping, DNS, Docker 등을 감시하는 Docker 기반 셀프호스티드 모니터링 도구다."
         }
       ]
     },
@@ -130,29 +130,29 @@
       "title": "🎨 프론트엔드",
       "items": [
         {
+          "full_name": "expressjs/express",
+          "url": "https://github.com/expressjs/express",
+          "what": "Node.js용 빠르고 간결한 웹 프레임워크 Express로, HTTP 서버와 API를 최소한의 구조로 만들 수 있게 해주는 JavaScript 레포다."
+        },
+        {
           "full_name": "CorentinTh/it-tools",
           "url": "https://github.com/CorentinTh/it-tools",
-          "what": "개발자와 IT 종사자를 위한 온라인 도구 모음으로, Vue 기반의 직관적인 UX를 제공하는 it-tools 레포다."
+          "what": "개발자와 IT 종사자를 위한 온라인 도구 모음 프로젝트로, Vue 기반의 웹 앱 it-tools.tech를 제공한다."
+        },
+        {
+          "full_name": "vercel-labs/ui",
+          "url": "https://github.com/vercel-labs/ui",
+          "what": "에이전트가 차세대 UI를 만들 때 쓰는 행동(behavior) 라이브러리로, 키보드 탐색·포커스·선택·팝업·드래그앤드롭과 ARIA를 @ui-sdk/core에 담고 React, Vue, Svelte, Solid, Web Components 어댑터를 제공한다."
         },
         {
           "full_name": "animate-css/animate.css",
           "url": "https://github.com/animate-css/animate.css",
-          "what": "Animate.css는 별도 자바스크립트 없이 클래스만 붙이면 쓸 수 있는 크로스 브라우저 CSS 애니메이션 라이브러리다."
+          "what": "Animate.css는 크로스 브라우저로 동작하는 CSS 애니메이션 라이브러리로, 클래스만 적용하면 바로 쓸 수 있는 애니메이션 모음이다."
         },
         {
-          "full_name": "Abdenasser/neohtop",
-          "url": "https://github.com/Abdenasser/neohtop",
-          "what": "macOS, Linux, Windows에서 동작하는 Rust·Tauri·Svelte 기반 오픈소스 데스크톱 시스템 모니터(NeoHtop)다."
-        },
-        {
-          "full_name": "declarative-dragging/dragology",
-          "url": "https://github.com/declarative-dragging/dragology",
-          "what": "SVG 요소를 위한 선언형 드래그 앤 드롭 인터랙션을 만드는 TypeScript 라이브러리 Dragology다."
-        },
-        {
-          "full_name": "recepkutuk/canon",
-          "url": "https://github.com/recepkutuk/canon",
-          "what": "Canon은 사내 도구용 테이블·폼·다이얼로그 등을 빌드 없이 순수 HTML과 CSS로 제공하는 컴포넌트 라이브러리다."
+          "full_name": "OWASP/wstg",
+          "url": "https://github.com/OWASP/wstg",
+          "what": "OWASP Web Security Testing Guide(WSTG)는 웹 애플리케이션과 웹 서비스의 보안을 점검하는 방법을 정리한 오픈소스 종합 가이드다."
         }
       ]
     },
@@ -162,22 +162,22 @@
         {
           "full_name": "KhronosGroup/SPIRV-Cross",
           "url": "https://github.com/KhronosGroup/SPIRV-Cross",
-          "what": "SPIR-V 셰이더를 파싱해 GLSL, MSL, HLSL, JSON 리플렉션 등으로 변환하고 리플렉션 API를 제공하는 Khronos 공식 도구이자 라이브러리다."
+          "what": "SPIR-V 셰이더를 GLSL, MSL, HLSL 등 고수준 셰이딩 언어로 변환하고 리플렉션 API를 제공하는 Khronos의 도구/라이브러리다."
         },
         {
           "full_name": "meshy-dev/ThreeRT",
           "url": "https://github.com/meshy-dev/ThreeRT",
-          "what": "three.js 스타일 API로 장면을 쓰면 GPU 하드웨어 레이트레이싱으로 실시간 경로 추적하는 Rust+wgpu 기반 엔진 ThreeRT다."
+          "what": "three.js 스타일 API 위에서 하드웨어 레이 트레이싱으로 실시간 경로 추적을 수행하는 Rust+wgpu 기반 렌더링 엔진 ThreeRT다."
         },
         {
-          "full_name": "sloemo01/diorama",
-          "url": "https://github.com/sloemo01/diorama",
-          "what": "Three.js 기반 디오라마 제작용 플레이북(SKILL.md)과 복사해 쓰는 코드 키트로, 픽셀 아트·스트로크 톤 등 룩을 정하고 모델 출처를 먼저 묻는 에이전트 스킬 저장소다."
+          "full_name": "vladocar/Sumi.css",
+          "url": "https://github.com/vladocar/Sumi.css",
+          "what": "Sumi.css는 시맨틱 HTML만 써도 완성된 모습으로 보이게 해 주는 미니멀한 classless 우선 CSS 프레임워크다."
         },
         {
           "full_name": "lucas-martinic/polyfork-catalog",
           "url": "https://github.com/lucas-martinic/polyfork-catalog",
-          "what": "polyfork-catalog는 three.js와 웹용 무료 로우폴리 3D 모델 3,310개와 테마 키트 33개를 모은 공개 인덱스 레포다. 모델 파일은 polyfork.dev에 있다."
+          "what": "polyfork-catalog은 3,333개의 무료 로우폴리 3D 모델과 33개 테마 키트의 공개 인덱스로, 모델은 GLB 또는 ES 모듈로 제공된다."
         }
       ]
     }
