@@ -4,7 +4,7 @@
 
 ## 동작 방식
 
-매주 월요일 09:00 KST에 GitHub Actions(`.github/workflows/weekly.yml`)가 다음을 실행합니다.
+매주 월요일 07:40 KST에 GitHub Actions(`.github/workflows/weekly.yml`)가 다음을 실행합니다.
 
 1. `github.com/trending?since=weekly`를 스크래핑해 **종합 Top 10**을 뽑습니다. 실패하면 Search API로 대체합니다.
 2. `config.yaml`의 카테고리마다 언어별 트렌딩 페이지와 토픽 검색으로 후보를 모읍니다.
