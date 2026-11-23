@@ -4,8 +4,9 @@
 
 설정·동작 방식: [docs/SETUP.md](docs/SETUP.md)
 
-**👉 최신 리포트: [2026-W46](weekly/2026-W46.md)**
+**👉 최신 리포트: [2026-W47](weekly/2026-W47.md)**
 
 ## 🗂️ 아카이브
 
+- [2026-W47](weekly/2026-W47.md)
 - [2026-W46](weekly/2026-W46.md)

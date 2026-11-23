@@ -1,5 +1,8 @@
 {
   "repos": {
+    "ChromeDevTools/chrome-devtools-mcp": [
+      "2026-W47"
+    ],
     "CorentinTh/it-tools": [
       "2026-W46"
     ],
@@ -8,6 +11,12 @@
     ],
     "FrigadeHQ/yogurt": [
       "2026-W46"
+    ],
+    "GoogleChrome/modern-web-guidance-src": [
+      "2026-W47"
+    ],
+    "GoogleCloudPlatform/cloud-foundation-fabric": [
+      "2026-W47"
     ],
     "HybridRobotics/supermimic": [
       "2026-W46"
@@ -24,6 +33,12 @@
     "addyosmani/agent-skills": [
       "2026-W46"
     ],
+    "ag-ui-protocol/ag-ui": [
+      "2026-W47"
+    ],
+    "alibaba/open-code-review": [
+      "2026-W47"
+    ],
     "animate-css/animate.css": [
       "2026-W46"
     ],
@@ -31,10 +46,14 @@
       "2026-W46"
     ],
     "backnotprop/plannotator": [
-      "2026-W46"
+      "2026-W46",
+      "2026-W47"
     ],
     "dotnet/skills": [
       "2026-W46"
+    ],
+    "dream-num/univer": [
+      "2026-W47"
     ],
     "elastic/elasticsearch": [
       "2026-W46"
@@ -42,14 +61,38 @@
     "expressjs/express": [
       "2026-W46"
     ],
+    "getarcaneapp/arcane": [
+      "2026-W47"
+    ],
+    "goldbergyoni/nodebestpractices": [
+      "2026-W47"
+    ],
     "google-deepmind/mujoco": [
       "2026-W46"
+    ],
+    "google-labs-code/stitch-skills": [
+      "2026-W47"
     ],
     "google/elephant-goldfish-model": [
       "2026-W46"
     ],
+    "hackclub/orchard": [
+      "2026-W47"
+    ],
+    "jquery/jquery": [
+      "2026-W47"
+    ],
+    "kajisho5/ffmpeg-skill": [
+      "2026-W47"
+    ],
     "keycloak/keycloak": [
       "2026-W46"
+    ],
+    "kubai087/kubai-icons": [
+      "2026-W47"
+    ],
+    "linuxserver/docker-swag": [
+      "2026-W47"
     ],
     "louislam/uptime-kuma": [
       "2026-W46"
@@ -57,23 +100,54 @@
     "lucas-martinic/polyfork-catalog": [
       "2026-W46"
     ],
+    "mastodon/mastodon": [
+      "2026-W47"
+    ],
     "meshy-dev/ThreeRT": [
       "2026-W46"
     ],
     "meta/astryx": [
-      "2026-W46"
+      "2026-W46",
+      "2026-W47"
     ],
     "milind-soni/OpenMausBot": [
       "2026-W46"
     ],
+    "missing-semester/missing-semester": [
+      "2026-W47"
+    ],
+    "mvanhorn/last30days-skill": [
+      "2026-W47"
+    ],
     "nix-community/home-manager": [
       "2026-W46"
+    ],
+    "nvm-sh/nvm": [
+      "2026-W47"
+    ],
+    "ohmyzsh/ohmyzsh": [
+      "2026-W47"
     ],
     "pi-hole/pi-hole": [
       "2026-W46"
     ],
+    "plausible/analytics": [
+      "2026-W47"
+    ],
+    "pookjw/HermesEnabler": [
+      "2026-W47"
+    ],
+    "replit/datacat": [
+      "2026-W47"
+    ],
     "rivet-dev/open-orange": [
       "2026-W46"
+    ],
+    "rustfs/rustfs": [
+      "2026-W47"
+    ],
+    "saadeghi/daisyui": [
+      "2026-W47"
     ],
     "sherlock-project/sherlock": [
       "2026-W46"
@@ -84,11 +158,23 @@
     "sloemo01/diorama": [
       "2026-W46"
     ],
+    "supabase/supavisor": [
+      "2026-W47"
+    ],
+    "sveltejs/svelte": [
+      "2026-W47"
+    ],
     "terraform-aws-modules/terraform-aws-eks": [
       "2026-W46"
     ],
+    "terraform-aws-modules/terraform-aws-lambda": [
+      "2026-W47"
+    ],
     "terraform-aws-modules/terraform-aws-vpc": [
       "2026-W46"
+    ],
+    "tradermonty/claude-trading-skills": [
+      "2026-W47"
     ],
     "vercel-labs/agent-browser": [
       "2026-W46"
@@ -98,6 +184,9 @@
     ],
     "vladocar/Sumi.css": [
       "2026-W46"
+    ],
+    "vulhub/vulhub": [
+      "2026-W47"
     ],
     "we-promise/sure": [
       "2026-W46"
